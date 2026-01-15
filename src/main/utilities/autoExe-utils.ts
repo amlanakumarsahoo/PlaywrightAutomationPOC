@@ -6,6 +6,6 @@ export function getHerokuAppUrl(): string {
     return 'http://automationexercise.com';
 }
 
-export async function getHerokuApp(page:Page): Promise<HomePageOperations> {
+export async function getAutoExeApp(page:Page): Promise<HomePageOperations> {
     return await HomePage.create(page);
 }

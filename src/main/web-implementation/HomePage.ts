@@ -1,7 +1,7 @@
 import { HomePageOperations } from "@src/main/operations/HomePageOperations";
 import { BasePage } from "@src/main/web-implementation/BasePage";
 import {Page, Locator} from '@playwright/test';
-import { getHerokuAppUrl } from "@src/main/utilities/herokuapp-utils";
+import { getHerokuAppUrl } from "@src/main/utilities/autoExe-utils";
 export class HomePage extends BasePage implements HomePageOperations {
     //private readonly page;
     private readonly subTitleSelector:Locator; // data-testid = subtitle

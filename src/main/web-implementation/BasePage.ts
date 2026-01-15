@@ -1,4 +1,4 @@
-import { HerokuAppOperations } from "@src/main/operations/HerokuAppOperations";
+import { HerokuAppOperations } from "@src/main/operations/AutoExeAppOperations";
 export class BasePage implements HerokuAppOperations {
     protected page: any; // Assuming you have a page object from Playwright or similar
     

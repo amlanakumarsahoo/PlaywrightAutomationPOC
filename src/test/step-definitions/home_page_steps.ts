@@ -1,5 +1,5 @@
 import { HomePageOperations } from '@src/main/operations/HomePageOperations';
-import { getHerokuApp } from '@src/main/utilities/herokuapp-utils';
+import { getAutoExeApp } from '@src/main/utilities/autoExe-utils';
 import { createBdd } from 'playwright-bdd';
 import { expect } from '@playwright/test';
 const { Given, When, Then } = createBdd(); // Decorators
@@ -8,7 +8,7 @@ let actualResult:string|null;
 Given('User Visits HomePage', async ({page}) => {
   // Step: Given User Visits HomePage
   // From: src\features\home_page.feature:5:1
-  homePage = await getHerokuApp(page) as HomePageOperations;
+  homePage = await getAutoExeApp(page) as HomePageOperations;
 });
 
 When('User Observes Title', async ({}) => {
