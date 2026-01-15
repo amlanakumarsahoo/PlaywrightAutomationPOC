@@ -80,3 +80,13 @@ Then('user verify the account deleted confirmation', async ({page}) => {
     const accountDeletedConfirmation = await signUpLoginPage.getAccountDeletedConfirmation();
     expect(accountDeletedConfirmation).toBeTruthy();
 }); 
+
+Then('user login with correct email and password', async ({page}, dataTable) => {
+    const data = dataTable.hashes()[0]; // Get first row of data table
+    await signUpLoginPage.getUserLoginInfo(
+        data.emailaddress,
+        data.password
+
+    );
+});
+

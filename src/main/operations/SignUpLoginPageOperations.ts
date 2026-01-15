@@ -16,4 +16,6 @@ export interface SignUpLoginPageOperations {
     getLoggedInUser(): Promise<boolean | null>;
     deleteAccount(): Promise<void>;
     getAccountDeletedConfirmation(): Promise<boolean | null>;
+    getUserLoginInfo(emailAddress: string, password: string): Promise<void>;
+    verifyLoggedInUser(): Promise<boolean | null>;
 }

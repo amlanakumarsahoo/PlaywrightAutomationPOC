@@ -21,11 +21,20 @@ Feature: automationexercise application user signup functionality
         Then user clicks on continue button
         Then user should be able to verify loggedin user
         Then user should able to delete the account
-        Then user verify the account deleted confirmation 
+        Then user verify the account deleted confirmation
         Then user clicks on continue button
         # Then user should be able to verify login page
         Examples:
             | username | emailaddress      |
             | Amlana90 | xamlana@gmail.com |
-            # | lana91   | mlana@gmail.com   |
+    # | lana91   | mlana@gmail.com   |
 
+    @Regression_UserLogin_TC002 @Regression
+    Scenario:Login User with correct email and password
+        Given User Visits HomePage
+        When User Clicks on Signup
+        Then user should be redirected to the signup page
+        Then user login with correct email and password
+            | emailaddress     | password   |
+            | amlana@gmail.com | Password@1 |
+        Then user should be able to verify loggedin user

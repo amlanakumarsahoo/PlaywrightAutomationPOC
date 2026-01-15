@@ -33,6 +33,9 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     private readonly loggedInUser: Locator;
     private readonly deleteAccountButton: Locator;
     private readonly accountDeletedConfirmation: Locator;
+    private readonly loginEmailAddress: Locator;
+    private readonly loginPassword: Locator;
+    private readonly loginButton: Locator;
 
     constructor(page: any) {
         super();
@@ -65,7 +68,10 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.loggedInUser = page.locator(".navbar-nav");
         this.deleteAccountButton = page.locator("//a[@href='/delete_account']");
         this.accountDeletedConfirmation = page.locator("[data-qa='account-deleted']");
-        }
+        this.loginEmailAddress = page.locator("form").filter({ hasText: 'Login' }).getByPlaceholder('Email Address')
+        this.loginPassword = page.locator("form").filter({ hasText: 'Login' }).getByPlaceholder('Password')
+        this.loginButton = page.locator("form").filter({ hasText: 'Login' }).getByRole('button', { name: 'Login' })
+        }   
     [x: string]: any;
     async getUserPassword(): Promise<void> {
         await this.password.fill(faker.person.firstName()+"@123");
@@ -171,4 +177,21 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         }
         return false;
     }     
+    async getUserLoginInfo(emailAddress: string, password: string): Promise<void> {
+        await this.loginEmailAddress.fill(emailAddress,{timeout:5000});
+        await this.loginPassword.fill(password,{timeout:5000});
+        await this.loginButton.click({ timeout: 5000 }); 
+    }
+    async verifyLoggedInUser(): Promise<boolean | null> {
+        try {
+            const loggedInUserText = await this.page.locator('li:has-text("Logged in as")').textContent({ timeout: 5000 });
+            if (loggedInUserText?.includes('Logged in as')) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.log('Could not find logged in user text:', error);
+            return false;
+        }
+    } 
 }
