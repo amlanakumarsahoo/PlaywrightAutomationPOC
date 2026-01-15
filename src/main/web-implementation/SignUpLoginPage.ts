@@ -109,18 +109,23 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         await this.receiveSpecialOffers.click();
     }
     async getUserAddressInfo(country: string, state: string, city: string, zipCode: string, mobileNumber: string): Promise<void> {
-        await this.firstName.fill(faker.person.firstName(),{timeout:5000});
-        await this.lastName.fill(faker.person.lastName(),{timeout:5000});
-        await this.company.fill(faker.company.name(),{timeout:5000});
-        await this.address1.fill(faker.location.streetAddress(),{timeout:5000});
-        await this.address2.fill(faker.location.streetAddress(),{timeout:5000});
+        const firstName = faker.person.firstName();
+        const lastName = faker.person.lastName();
+        const company = faker.company.name();
+        const address1 = faker.location.streetAddress();
+        const address2 = faker.location.streetAddress();
+        await this.firstName.fill(firstName,{timeout:5000});
+        await this.lastName.fill(lastName,{timeout:5000});
+        await this.company.fill(company,{timeout:5000});
+        await this.address1.fill(address1,{timeout:5000});
+        await this.address2.fill(address2,{timeout:5000});
         await this.country.selectOption(country,{timeout:5000});
         await this.state.fill(state,{timeout:5000});
         await this.city.fill(city,{timeout:5000});
         await this.zipCode.fill(zipCode,{timeout:5000});
         const usPhone = faker.string.numeric(10);
         await this.mobileNumber.fill(usPhone,{timeout:5000});
-        console.log(`User Address Information: ${this.firstName}, ${this.lastName}, ${this.company}, ${this.address1}, ${this.address2}, ${this.country}, ${this.state}, ${this.city}, ${this.zipCode}, ${usPhone}`);
+        console.log(`User Address Information: First Name: ${firstName}, Last Name: ${lastName}, Company: ${company}, Address1: ${address1}, Address2: ${address2}, Country: ${country}, State: ${state}, City: ${city}, Zip Code: ${zipCode}, Mobile Number: ${usPhone}`);
     }
     async doSubmitForm(): Promise<void> {
         await this.page.waitForLoadState('networkidle');
