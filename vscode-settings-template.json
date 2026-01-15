@@ -1,0 +1,21 @@
+{
+  "cucumber.features": [
+    "src/test/features/**/*.feature"
+  ],
+  "cucumber.glue": [
+    "src/test/step-definitions/**/*.ts"
+  ],
+  "cucumber.parameterTypes": [],
+  "files.associations": {
+    "*.feature": "cucumber"
+  },
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  },
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": true
+}

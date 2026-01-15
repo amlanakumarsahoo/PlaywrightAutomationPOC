@@ -1,0 +1,45 @@
+{
+  "name": "automation-infogain",
+  "version": "1.0.0",
+  "description": "Comprehensive TypeScript automation framework with Playwright support",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "clean": "rm -rf dist",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "testbdd": "bddgen && playwright test",
+    "testbdd:headed": "bddgen && playwright test --headed --project=chromium",
+    "testbdd:debug": "bddgen && playwright test --debug",
+    "bddgen": "bddgen",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "typescript",
+    "automation",
+    "playwright",
+    "testing",
+    "framework"
+  ],
+  "author": "Suresh - Software Trainer",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "playwright-bdd": "^8.4.2",
+    "prettier": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
