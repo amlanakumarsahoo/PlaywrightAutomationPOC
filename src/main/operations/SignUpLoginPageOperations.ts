@@ -19,4 +19,5 @@ export interface SignUpLoginPageOperations {
     getUserLoginInfo(emailAddress: string, password: string): Promise<void>;
     verifyLoggedInUser(): Promise<boolean | null>;
     getLoginFailedConfirmation(): Promise<boolean | null>;
+    logout(): Promise<void>;
 }

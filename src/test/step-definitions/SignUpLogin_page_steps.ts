@@ -100,3 +100,13 @@ Then('user should be able to verify login failed confirmation', async ({ page })
     expect(loginFailedConfirmation).toBeTruthy();
 });
 
+Then('user logout from the application', async ({ page }) => {
+    await signUpLoginPage.logout(); 
+});
+
+Then('user should be on login page', async ({ page }) => {
+    const currentUrl = page.url();
+    const pageTitle = await page.title();
+    expect(currentUrl.toLowerCase()).toContain('login');
+    expect(pageTitle.toLowerCase()).toContain('login');
+});

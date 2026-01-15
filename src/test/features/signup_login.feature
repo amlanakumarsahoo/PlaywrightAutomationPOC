@@ -48,3 +48,27 @@ Feature: automationexercise application user signup functionality
             | emailaddress | password   |
             | xa@gmail.com | Password@1 |
         Then user should be able to verify login failed confirmation
+
+    @Regression_UserLogin_TC004 @Regression
+    Scenario:Logout User
+        Given User Visits HomePage
+        When User Clicks on Signup
+        Then user should be redirected to the signup page
+        Then user login with correct email and password
+            | emailaddress     | password   |
+            | amlana@gmail.com | Password@1 |
+        Then user should be able to verify loggedin user
+        Then user logout from the application
+        Then user should be on login page
+
+    @Regression_UserLogin_TC005 @Regression
+    Scenario Outline:Register User with existing email
+        Given User Visits HomePage
+        When User Clicks on Signup
+        Then user should be redirected to the signup page
+        Then user should be able to enter the username "<username>"
+        Then user should be able to enter the email address "<emailaddress>"
+        Then user should be able to click on signup button
+        Examples:
+            | username         | emailaddress |
+            | amlana@gmail.com | Password@1   |
