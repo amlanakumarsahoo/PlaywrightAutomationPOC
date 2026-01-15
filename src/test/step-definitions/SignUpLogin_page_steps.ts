@@ -19,17 +19,14 @@ Then('user should be redirected to the signup page', async ({page}) => {
 });
 
 Then('user should be able to enter the username {string}', async ({page}, username: string) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getUserName(faker.person.firstName());
 });
 
 Then('user should be able to enter the email address {string}', async ({page}, emailaddress: string) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getEmailAddress(faker.internet.email());
 });
 
 Then('user should be able to click on signup button', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.doSignUp();
 });
 
@@ -38,27 +35,21 @@ Then('user should be able to verify creation of new user', async ({page}) => {
   expect(newCreatedUser).toBeTruthy();
 });
 Then('user fill the user information', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.fillUserInfo();
 });
 Then('user fill the user password information', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getUserPassword();
 });
 Then('user fill the user DOB information', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getUserDOB();
 });
 Then('user fill the user news letter information', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getSignUpNewsLetter();
 });
 Then('user fill the user special offers information', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.getReceiveSpecialOffers();
 });
 Then('user fill the user address information', async ({page}, dataTable) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     const data = dataTable.hashes()[0]; // Get first row of data table
     await signUpLoginPage.getUserAddressInfo(
         data.country,
@@ -69,6 +60,23 @@ Then('user fill the user address information', async ({page}, dataTable) => {
     );
 });
 Then('user should be able to submit the signup form', async ({page}) => {
-    signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.doSubmitForm();
 });
+Then('user should be able to verify account created confirmation', async ({page}) => {
+    const accountCreatedConfirmation = await signUpLoginPage.getAccountCreatedConfirmation();
+    expect(accountCreatedConfirmation).toBeTruthy();
+});
+Then('user clicks on continue button', async ({page}) => {
+    await signUpLoginPage.doContinue();
+});
+Then('user should be able to verify loggedin user', async ({page}) => {
+    const loggedInUser = await signUpLoginPage.getLoggedInUser();
+    expect(loggedInUser).toBeTruthy();
+});
+Then('user should able to delete the account', async ({page}) => {
+    await signUpLoginPage.deleteAccount();
+}); 
+Then('user verify the account deleted confirmation', async ({page}) => {
+    const accountDeletedConfirmation = await signUpLoginPage.getAccountDeletedConfirmation();
+    expect(accountDeletedConfirmation).toBeTruthy();
+}); 

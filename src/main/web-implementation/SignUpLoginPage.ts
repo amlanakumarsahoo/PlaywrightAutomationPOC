@@ -28,11 +28,15 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     private readonly zipCode: Locator;
     private readonly mobileNumber: Locator;
     private readonly createAccountButton: Locator;
+    private readonly accountCreatedConfirmation: Locator;
+    private readonly continueButton: Locator;
+    private readonly loggedInUser: Locator;
+    private readonly deleteAccountButton: Locator;
+    private readonly accountDeletedConfirmation: Locator;
 
     constructor(page: any) {
         super();
         this.page = page;
-        //this.signupBtn = page.locator('//*[@id="header"]/div/div/div/div[2]/div/ul/li[4]/a')
         this.signupBtn=this.page.getByRole('link', { name: ' Signup / Login' })
         this.userName = page.getByRole('textbox', { name: 'Name' })
         this.emailAddress = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address')
@@ -56,6 +60,11 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.zipCode = page.locator("#zipcode");
         this.mobileNumber = page.locator("#mobile_number");
         this.createAccountButton = page.locator("[data-qa='create-account']");
+        this.accountCreatedConfirmation = page.locator("[data-qa='account-created']");
+        this.continueButton = page.locator("[data-qa='continue-button']");
+        this.loggedInUser = page.locator(".navbar-nav");
+        this.deleteAccountButton = page.locator("//a[@href='/delete_account']");
+        this.accountDeletedConfirmation = page.locator("[data-qa='account-deleted']");
         }
     [x: string]: any;
     async getUserPassword(): Promise<void> {
@@ -77,7 +86,6 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     }
     async doSignUpLogin(): Promise<void | null> {
         await this.signupBtn.click();
-        // return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
     }
     async verifyCreationOfNewUser(): Promise<boolean | null> {
         if(await this.newCreatedUser.isVisible()) {
@@ -131,4 +139,36 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         await this.page.waitForLoadState('networkidle');
         await this.createAccountButton.click({ timeout: 5000 }); 
     }
+    async getAccountCreatedConfirmation(): Promise<boolean | null> {
+        const confirmationText = await this.accountCreatedConfirmation.textContent();
+        if (confirmationText?.includes('Account Created!')) {
+            return true;
+        }
+        return false;
+    }
+    async doContinue(): Promise<void> {
+        await this.continueButton.click({ timeout: 5000 }); 
+    }
+    async getLoggedInUser(): Promise<boolean | null> {
+        try {
+            const loggedInUserText = await this.page.locator('li:has-text("Logged in as")').textContent({ timeout: 5000 });
+            if (loggedInUserText?.includes('Logged in as')) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.log('Could not find logged in user text:', error);
+            return false;
+        }
+    } 
+    async deleteAccount(): Promise<void> {
+        await this.deleteAccountButton.click({ timeout: 5000 }); 
+    }  
+    async getAccountDeletedConfirmation(): Promise<boolean | null> {
+        const confirmationText = await this.accountDeletedConfirmation.textContent();
+        if (confirmationText?.includes('Account Deleted!')) {
+            return true;
+        }
+        return false;
+    }     
 }

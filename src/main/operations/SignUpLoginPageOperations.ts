@@ -11,4 +11,9 @@ export interface SignUpLoginPageOperations {
     getReceiveSpecialOffers(): Promise<void>;
     getUserAddressInfo(country: string, state: string, city: string, zipCode: string, mobileNumber: string): Promise<void>;
     doSubmitForm(): Promise<void>;
+    getAccountCreatedConfirmation(): Promise<boolean | null>;
+    doContinue(): Promise<void>;
+    getLoggedInUser(): Promise<boolean | null>;
+    deleteAccount(): Promise<void>;
+    getAccountDeletedConfirmation(): Promise<boolean | null>;
 }

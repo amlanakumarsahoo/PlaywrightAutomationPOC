@@ -17,10 +17,15 @@ Feature: automationexercise application user signup functionality
             | country       | state    | city     | zipCode | mobileNumber |
             | United States | New York | New York | 10001   | 1234567890   |
         Then user should be able to submit the signup form
-
-        # Then user should be able to click on signup button
+        Then user should be able to verify account created confirmation
+        Then user clicks on continue button
+        Then user should be able to verify loggedin user
+        Then user should able to delete the account
+        Then user verify the account deleted confirmation 
+        Then user clicks on continue button
+        # Then user should be able to verify login page
         Examples:
             | username | emailaddress      |
             | Amlana90 | xamlana@gmail.com |
-            | lana91   | mlana@gmail.com   |
+            # | lana91   | mlana@gmail.com   |
 
