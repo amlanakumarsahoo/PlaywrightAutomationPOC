@@ -7,6 +7,7 @@ export class HomePage extends BasePage implements HomePageOperations {
     private readonly subTitleSelector:Locator; // data-testid = subtitle
     private readonly titleSelector:Locator;
     private readonly exampleSelector:Locator;
+    private readonly signupSelector:Locator;
     constructor(page: any) {
         super();
         this.page = page;
@@ -15,8 +16,14 @@ export class HomePage extends BasePage implements HomePageOperations {
         this.subTitleSelector = page.locator('h2'); // data-testid = 'home-subtitle'
         // this.exampleSelector = page.getByRole('listitem'); // data-testid = 'example-link'
         this.exampleSelector = page.locator('#content > ul > li > a');
+        this.signupSelector = page.locator('//*[@id="header"]/div/div/div/div[2]/div/ul/li[4]/a');
         //this.page.goto(getHerokuAppUrl());
         //this.navigate();
+    }
+    doSignup(): Promise<void|null> {
+        this.signupSelector.click();
+        this.page.getUrl();
+        return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
     }
     // Only Holds good in Async Libraries
     static async create(page:Page) {

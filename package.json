@@ -17,7 +17,7 @@
     "testbdd:debug": "bddgen && playwright test --debug",
     "bddgen": "bddgen",
     "report": "playwright show-report",
-    "test_amlana":"bddgen && playwright test --headed --grep @Regression_TC001 --project=chromium"
+    "test_amlana":"bddgen && playwright test --headed --grep @Regression_UserSignUp_TC001 --project=chromium"
   },
   "keywords": [
     "typescript",

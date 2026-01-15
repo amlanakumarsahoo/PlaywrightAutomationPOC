@@ -4,6 +4,7 @@ interface HomePageOperations  extends AutoExeAppOperations{
     getSubTitle(): Promise<string|null>;
     getAvailableExamples(): Promise<string[]|null>;
     getFooterText(): Promise<string|null>;
-    gotoExample(exampleName:string): Promise<AutoExeAppOperations>;
+    //gotoExample(exampleName:string): Promise<AutoExeAppOperations>;
+ 
 }
  export type { HomePageOperations };
