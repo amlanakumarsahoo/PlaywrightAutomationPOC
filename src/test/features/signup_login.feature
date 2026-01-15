@@ -38,3 +38,13 @@ Feature: automationexercise application user signup functionality
             | emailaddress     | password   |
             | amlana@gmail.com | Password@1 |
         Then user should be able to verify loggedin user
+
+    @Regression_UserLogin_TC003 @Regression
+    Scenario:Login User with incorrect email and password
+        Given User Visits HomePage
+        When User Clicks on Signup
+        Then user should be redirected to the signup page
+        Then user login with incorrect email and password
+            | emailaddress | password   |
+            | xa@gmail.com | Password@1 |
+        Then user should be able to verify login failed confirmation

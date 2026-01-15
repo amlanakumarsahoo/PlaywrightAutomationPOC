@@ -36,6 +36,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     private readonly loginEmailAddress: Locator;
     private readonly loginPassword: Locator;
     private readonly loginButton: Locator;
+    private readonly loginFailedConfirmation: Locator;
 
     constructor(page: any) {
         super();
@@ -71,7 +72,8 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.loginEmailAddress = page.locator("form").filter({ hasText: 'Login' }).getByPlaceholder('Email Address')
         this.loginPassword = page.locator("form").filter({ hasText: 'Login' }).getByPlaceholder('Password')
         this.loginButton = page.locator("form").filter({ hasText: 'Login' }).getByRole('button', { name: 'Login' })
-        }   
+        this.loginFailedConfirmation = page.locator("p:has-text('Your email or password is incorrect')");
+    }   
     [x: string]: any;
     async getUserPassword(): Promise<void> {
         await this.password.fill(faker.person.firstName()+"@123");
@@ -194,4 +196,11 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
             return false;
         }
     } 
+    async getLoginFailedConfirmation(): Promise<boolean | null> {
+        const failedConfirmationText = await this.loginFailedConfirmation.textContent({ timeout: 9000 });
+        if (failedConfirmationText?.includes('Your email or password is incorrect')) {
+            return true;
+        }
+        return false;
+    }   
 }
