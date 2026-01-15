@@ -17,7 +17,7 @@
     "testbdd:debug": "bddgen && playwright test --debug",
     "bddgen": "bddgen",
     "report": "playwright show-report",
-    "test_amlana":"bddgen && playwright test --headed --grep @Regression --project=chromium && npx playwright show-report"
+    "test_amlana": "bddgen && playwright test --headed --grep @Regression --project=chromium && npx playwright show-report"
   },
   "keywords": [
     "typescript",
@@ -29,6 +29,7 @@
   "author": "Suresh - Software Trainer",
   "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
     "@playwright/test": "^1.40.0",
     "@types/node": "^20.10.0",
     "@typescript-eslint/eslint-plugin": "^6.13.0",

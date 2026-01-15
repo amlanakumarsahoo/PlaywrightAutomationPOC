@@ -1,7 +1,14 @@
 export interface SignUpLoginPageOperations {
     [x: string]: any;
     doSignUpLogin(): Promise<void|null>;
-    enteruserName(username: string): Promise<void>;
-    enterEmailAddress(emailAddress: string): Promise<void>;
-    clickSignUpButton(): Promise<void>;
+    getUserName(username: string): Promise<void>;
+    getEmailAddress(emailAddress: string): Promise<void>;
+    doSignUp(): Promise<void>;
+    verifyCreationOfNewUser(): Promise<boolean | null>;
+    getUserPassword(): Promise<void>;
+    getUserDOB(): Promise<void>;
+    getSignUpNewsLetter(): Promise<void>;
+    getReceiveSpecialOffers(): Promise<void>;
+    getUserAddressInfo(country: string, state: string, city: string, zipCode: string, mobileNumber: string): Promise<void>;
+    doSubmitForm(): Promise<void>;
 }

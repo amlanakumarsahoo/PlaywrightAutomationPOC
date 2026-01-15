@@ -1,16 +1,33 @@
 import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
 import { SignUpLoginPageOperations } from "../operations/SignUpLoginPageOperations";
+import { faker } from "@faker-js/faker";
 
 export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperations {
-
-
     private readonly signupBtn: Locator;
     static doSignUpLogin: any;
     private readonly userName: Locator;
     private readonly emailAddress: Locator;
     private readonly signUpButton: Locator;
     private readonly newCreatedUser: Locator;
+    private readonly password: Locator;
+    private readonly userDOB_day: Locator;
+    private readonly userDOB_month: Locator;
+    private readonly userDOB_year: Locator;
+    private readonly signUpNewsLetter: Locator;
+    private readonly receiveSpecialOffers: Locator;
+    private readonly userAddressInfo: Locator;
+    private readonly firstName: Locator;
+    private readonly lastName: Locator;
+    private readonly company: Locator;
+    private readonly address1: Locator;
+    private readonly address2: Locator;
+    private readonly country: Locator;
+    private readonly state: Locator;
+    private readonly city: Locator;
+    private readonly zipCode: Locator;
+    private readonly mobileNumber: Locator;
+    private readonly createAccountButton: Locator;
 
     constructor(page: any) {
         super();
@@ -19,31 +36,94 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.signupBtn=this.page.getByRole('link', { name: ' Signup / Login' })
         this.userName = page.getByRole('textbox', { name: 'Name' })
         this.emailAddress = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address')
-        this.signUpButton = page.getByRole('button', { name: 'Signup' })
-        this.newCreatedUser = page.locator("#name")
+        this.signUpButton = page.locator('[data-qa="signup-button"]');
+        this.newCreatedUser = page.locator("#name");
+        this.password = page.locator("#password");
+        this.userDOB_day = page.locator("#days");
+        this.userDOB_month = page.locator("#months");
+        this.userDOB_year = page.locator("#years");
+        this.signUpNewsLetter = page.locator("#newsletter");
+        this.receiveSpecialOffers = page.locator("#optin");
+        this.userAddressInfo = page.locator("#address");
+        this.firstName = page.locator("#first_name");
+        this.lastName = page.locator("#last_name");
+        this.company = page.locator("#company");
+        this.address1 = page.locator("#address1");
+        this.address2 = page.locator("#address2");
+        this.country = page.locator("#country");
+        this.state = page.locator("#state");
+        this.city = page.locator("#city");
+        this.zipCode = page.locator("#zipcode");
+        this.mobileNumber = page.locator("#mobile_number");
+        this.createAccountButton = page.locator("[data-qa='create-account']");
+        }
+    [x: string]: any;
+    async getUserPassword(): Promise<void> {
+        await this.password.fill(faker.person.firstName()+"@123");
     }
-    enteruserName(username: string): Promise<void> {
-        return this.userName.fill(username);
-        // return this.page.waitForNavigation({ waitUntil: 'networkidle' });
+    async getUserName(username: string): Promise<void> {
+        await this.userName.fill(username);
     }
-    enterEmailAddress(emailAddress: string): Promise<void> {
-        return this.emailAddress.fill(emailAddress)
-        // return this.page.waitForNavigation({ waitUntil: 'networkidle' });
+    async getEmailAddress(emailAddress: string): Promise<void> {
+        await this.emailAddress.fill(emailAddress)
     }
-    clickSignUpButton(): Promise<void> {
-        this.signUpButton.click()
-        return this.page.waitForNavigation({ waitUntil: 'networkidle' });
+    async doSignUp(): Promise<void> {
+        await this.page.waitForLoadState('networkidle')
+        await this.signUpButton.click();
     }
-    // Only Holds good in Async Libraries
     static async create(page: Page) {
         const instance = new SignUpLoginPage(page);
         return instance;
     }
     async doSignUpLogin(): Promise<void | null> {
-        this.signupBtn.click();
-        return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
+        await this.signupBtn.click();
+        // return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
     }
     async verifyCreationOfNewUser(): Promise<boolean | null> {
-        return this.newCreatedUser.isVisible(); 
+        if(await this.newCreatedUser.isVisible()) {
+            return true;
+        }
+        return false;
+    }
+
+    async getUserDOB(): Promise<void>{
+        // Generate day (1-31, matching available options)
+        const day = faker.number.int({ min: 1, max: 31 }).toString();
+        await this.userDOB_day.selectOption(day, {timeout: 5000});
+        
+        // Generate month name (matching dropdown options)
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = faker.helpers.arrayElement(months);
+        await this.userDOB_month.selectOption(month, {timeout: 5000});
+        
+        // Generate year within available range (1900-2021)
+        const year = faker.number.int({ min: 1900, max: 2021 }).toString();
+        await this.userDOB_year.selectOption(year, {timeout: 5000});
+    }
+ 
+    async getSignUpNewsLetter(): Promise<void> {
+        await this.signUpNewsLetter.click();
+    }
+    async getReceiveSpecialOffers(): Promise<void> {
+        await this.receiveSpecialOffers.click();
+    }
+    async getUserAddressInfo(country: string, state: string, city: string, zipCode: string, mobileNumber: string): Promise<void> {
+        await this.firstName.fill(faker.person.firstName(),{timeout:5000});
+        await this.lastName.fill(faker.person.lastName(),{timeout:5000});
+        await this.company.fill(faker.company.name(),{timeout:5000});
+        await this.address1.fill(faker.location.streetAddress(),{timeout:5000});
+        await this.address2.fill(faker.location.streetAddress(),{timeout:5000});
+        await this.country.selectOption(country,{timeout:5000});
+        await this.state.fill(state,{timeout:5000});
+        await this.city.fill(city,{timeout:5000});
+        await this.zipCode.fill(zipCode,{timeout:5000});
+        const usPhone = faker.string.numeric(10);
+        await this.mobileNumber.fill(usPhone,{timeout:5000});
+        console.log(`User Address Information: ${this.firstName}, ${this.lastName}, ${this.company}, ${this.address1}, ${this.address2}, ${this.country}, ${this.state}, ${this.city}, ${this.zipCode}, ${usPhone}`);
+    }
+    async doSubmitForm(): Promise<void> {
+        await this.page.waitForLoadState('networkidle');
+        await this.createAccountButton.click({ timeout: 5000 }); 
     }
 }

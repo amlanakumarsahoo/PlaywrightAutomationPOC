@@ -9,8 +9,18 @@ Feature: automationexercise application user signup functionality
         Then user should be able to enter the email address "<emailaddress>"
         Then user should be able to click on signup button
         Then user should be able to verify creation of new user
+        Then user fill the user password information
+        Then user fill the user DOB information
+        Then user fill the user news letter information
+        Then user fill the user special offers information
+        Then user fill the user address information
+            | country       | state    | city     | zipCode | mobileNumber |
+            | United States | New York | New York | 10001   | 1234567890   |
+        Then user should be able to submit the signup form
+
+        # Then user should be able to click on signup button
         Examples:
-            | username | emailaddress    |
-            | Amlana90   | xamlana@gmail.com |
-            | lana91   | mlana@gmail.com    |
+            | username | emailaddress      |
+            | Amlana90 | xamlana@gmail.com |
+            | lana91   | mlana@gmail.com   |
 
