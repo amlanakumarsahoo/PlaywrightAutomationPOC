@@ -1,5 +1,5 @@
-import { HerokuAppOperations } from "@src/main/operations/AutoExeAppOperations";
-export class BasePage implements HerokuAppOperations {
+import { AutoExeAppOperations } from "@src/main/operations/AutoExeAppOperations";
+export class BasePage implements AutoExeAppOperations {
     protected page: any; // Assuming you have a page object from Playwright or similar
     
     async getRepoURL(): Promise<string> {
