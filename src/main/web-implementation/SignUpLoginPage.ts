@@ -87,7 +87,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         await this.emailAddress.fill(emailAddress)
     }
     async doSignUp(): Promise<void> {
-        await this.page.waitForLoadState('networkidle')
+        // await this.page.waitForLoadState('networkidle')
         await this.signUpButton.click();
     }
     static async create(page: Page) {
@@ -105,19 +105,30 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     }
 
     async getUserDOB(): Promise<void>{
+        // Wait for all DOB dropdowns to be ready
+        await this.userDOB_day.waitFor({ state: 'visible' });
+        await this.userDOB_month.waitFor({ state: 'visible' });
+        await this.userDOB_year.waitFor({ state: 'visible' });
+        
         // Generate day (1-31, matching available options)
         const day = faker.number.int({ min: 1, max: 31 }).toString();
-        await this.userDOB_day.selectOption(day, {timeout: 5000});
+        await this.userDOB_day.selectOption(day, { timeout: 10000 });
+        
+        // Small delay to ensure day selection is processed
+        await this.page.waitForTimeout(500);
         
         // Generate month name (matching dropdown options)
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                        'July', 'August', 'September', 'October', 'November', 'December'];
         const month = faker.helpers.arrayElement(months);
-        await this.userDOB_month.selectOption(month, {timeout: 5000});
+        await this.userDOB_month.selectOption(month, { timeout: 10000 });
+        
+        // Small delay to ensure month selection is processed
+        await this.page.waitForTimeout(500);
         
         // Generate year within available range (1900-2021)
         const year = faker.number.int({ min: 1900, max: 2021 }).toString();
-        await this.userDOB_year.selectOption(year, {timeout: 5000});
+        await this.userDOB_year.selectOption(year, { timeout: 10000 });
     }
  
     async getSignUpNewsLetter(): Promise<void> {
@@ -132,21 +143,46 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         const company = faker.company.name();
         const address1 = faker.location.streetAddress();
         const address2 = faker.location.streetAddress();
-        await this.firstName.fill(firstName,{timeout:5000});
-        await this.lastName.fill(lastName,{timeout:5000});
-        await this.company.fill(company,{timeout:5000});
-        await this.address1.fill(address1,{timeout:5000});
-        await this.address2.fill(address2,{timeout:5000});
-        await this.country.selectOption(country,{timeout:5000});
-        await this.state.fill(state,{timeout:5000});
-        await this.city.fill(city,{timeout:5000});
-        await this.zipCode.fill(zipCode,{timeout:5000});
+        
+        // Wait for form to be fully loaded and stable
+        // await this.page.waitForLoadState('networkidle');
+        
+        // Fill form fields with proper waits and increased timeout
+        await this.firstName.waitFor({ state: 'visible' });
+        await this.firstName.fill(firstName, { timeout: 10000 });
+        
+        await this.lastName.waitFor({ state: 'visible' });
+        await this.lastName.fill(lastName, { timeout: 10000 });
+        
+        await this.company.waitFor({ state: 'visible' });
+        await this.company.fill(company, { timeout: 10000 });
+        
+        await this.address1.waitFor({ state: 'visible' });
+        await this.address1.fill(address1, { timeout: 10000 });
+        
+        await this.address2.waitFor({ state: 'visible' });
+        await this.address2.fill(address2, { timeout: 10000 });
+        
+        await this.country.waitFor({ state: 'visible' });
+        await this.country.selectOption(country, { timeout: 10000 });
+        
+        await this.state.waitFor({ state: 'visible' });
+        await this.state.fill(state, { timeout: 10000 });
+        
+        await this.city.waitFor({ state: 'visible' });
+        await this.city.fill(city, { timeout: 10000 });
+        
+        await this.zipCode.waitFor({ state: 'visible' });
+        await this.zipCode.fill(zipCode, { timeout: 10000 });
+        
         const usPhone = faker.string.numeric(10);
-        await this.mobileNumber.fill(usPhone,{timeout:5000});
+        await this.mobileNumber.waitFor({ state: 'visible' });
+        await this.mobileNumber.fill(usPhone, { timeout: 10000 });
+        
         console.log(`User Address Information: First Name: ${firstName}, Last Name: ${lastName}, Company: ${company}, Address1: ${address1}, Address2: ${address2}, Country: ${country}, State: ${state}, City: ${city}, Zip Code: ${zipCode}, Mobile Number: ${usPhone}`);
     }
     async doSubmitForm(): Promise<void> {
-        await this.page.waitForLoadState('networkidle');
+        // await this.page.waitForLoadState('networkidle');
         await this.createAccountButton.click({ timeout: 5000 }); 
     }
     async getAccountCreatedConfirmation(): Promise<boolean | null> {
