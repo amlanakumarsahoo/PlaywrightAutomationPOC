@@ -11,7 +11,7 @@ export class HomePage extends BasePage implements HomePageOperations {
         super();
         this.page = page;
         //this.page.locator.
-        this.titleSelector = page.locator('h1'); // data-testid = 'home-title'
+        this.titleSelector = page.locator('//meta[@name="google-site-verification"]/following-sibling::title'); // data-testid = 'home-title'
         this.subTitleSelector = page.locator('h2'); // data-testid = 'home-subtitle'
         // this.exampleSelector = page.getByRole('listitem'); // data-testid = 'example-link'
         this.exampleSelector = page.locator('#content > ul > li > a');
@@ -54,7 +54,7 @@ export class HomePage extends BasePage implements HomePageOperations {
     }
     async getTitle(): Promise<string|null> {
         // Implementation to get the title from the home page
-        await this.page.waitForLoadState('domcontentloaded');
+        //await this.page.waitForLoadState('domcontentloaded');
         return this.titleSelector.textContent();
     }}   
 

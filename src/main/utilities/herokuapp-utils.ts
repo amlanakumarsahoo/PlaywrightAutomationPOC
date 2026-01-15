@@ -3,7 +3,7 @@ import { HomePage } from "@src/main/web-implementation/HomePage";
 import { Page } from "@playwright/test";
 export function getHerokuAppUrl(): string {
     // Env Files
-    return 'https://the-internet.herokuapp.com/';
+    return 'http://automationexercise.com';
 }
 
 export async function getHerokuApp(page:Page): Promise<HomePageOperations> {
