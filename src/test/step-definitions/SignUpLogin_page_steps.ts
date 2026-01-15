@@ -30,3 +30,8 @@ Then('user should be able to click on signup button', async ({page}) => {
     signUpLoginPage = await getSignUpLoginApp(page) as SignUpLoginPageOperations;
     await signUpLoginPage.clickSignUpButton();
 });
+
+Then('user should be able to verify creation of new user', async ({page}) => {
+  const newCreatedUser = await signUpLoginPage.verifyCreationOfNewUser();
+  expect(newCreatedUser).toBeTruthy();
+});

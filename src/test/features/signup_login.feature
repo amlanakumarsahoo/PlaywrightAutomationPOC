@@ -8,8 +8,9 @@ Feature: automationexercise application user signup functionality
         Then user should be able to enter the username "<username>"
         Then user should be able to enter the email address "<emailaddress>"
         Then user should be able to click on signup button
+        Then user should be able to verify creation of new user
         Examples:
             | username | emailaddress    |
-            | Amlana   | amlana@gmail.com |
-            | Ram      | ram@gmail.com    |
+            | Amlana90   | xamlana@gmail.com |
+            | lana91   | mlana@gmail.com    |
 

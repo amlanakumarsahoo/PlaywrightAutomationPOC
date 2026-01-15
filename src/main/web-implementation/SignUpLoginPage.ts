@@ -10,6 +10,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     private readonly userName: Locator;
     private readonly emailAddress: Locator;
     private readonly signUpButton: Locator;
+    private readonly newCreatedUser: Locator;
 
     constructor(page: any) {
         super();
@@ -19,6 +20,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.userName = page.getByRole('textbox', { name: 'Name' })
         this.emailAddress = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address')
         this.signUpButton = page.getByRole('button', { name: 'Signup' })
+        this.newCreatedUser = page.locator("#name")
     }
     enteruserName(username: string): Promise<void> {
         return this.userName.fill(username);
@@ -41,5 +43,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.signupBtn.click();
         return this.page.waitForNavigation({ waitUntil: 'domcontentloaded' });
     }
-
+    async verifyCreationOfNewUser(): Promise<boolean | null> {
+        return this.newCreatedUser.isVisible(); 
+    }
 }
