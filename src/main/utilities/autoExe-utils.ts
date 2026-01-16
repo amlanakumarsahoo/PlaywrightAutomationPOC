@@ -7,6 +7,8 @@ import { getTestConfig } from "./test-config";
 import { TestHelpers } from "./test-helpers";
 import { ContactusOperations } from "../operations/ContactusOperations";
 import { ContactUsPage } from "../web-implementation/ContactUsPage";
+import { TestCasePage } from "../web-implementation/TestCasePage";
+import { TestCasePageOperations } from "../operations/TestCasePageOperations";
 
 export function getAutoExeUrl(): string {
     // Get URL from config or environment
@@ -24,6 +26,10 @@ export async function getSignUpLoginApp(page: Page): Promise<SignUpLoginPageOper
 
 export async function getContactUsApp(page: Page): Promise<ContactusOperations> {
     return await ContactUsPage.create(page);
+}
+
+export async function getTestCaseApp(page: Page): Promise<TestCasePageOperations> {
+    return await TestCasePage.create(page);
 }
 
 export function getTestHelpers(page: Page): TestHelpers {

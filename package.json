@@ -28,7 +28,7 @@
     "test:reports": "npm run report:clean && npm run testbdd && npm run report:cucumber && npm run report:open:cucumber",
     "test:bootstrap": "npm run testbdd && npm run report:cucumber && npm run report:open:cucumber",
     "report:bootstrap": "npm run report:cucumber && npm run report:open:cucumber",
-    "test_amlana": "bddgen && playwright test --headed --grep @Regression_ContactUs_TC001 --project=chromium && npm run report:bootstrap"
+    "test_amlana": "bddgen && playwright test --headed --grep @Regression_TestCase_TC001 --project=chromium && npm run report:bootstrap"
   },
   "keywords": [
     "typescript",
