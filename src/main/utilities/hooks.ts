@@ -4,6 +4,8 @@ import { getTestConfig } from './test-config';
 
 // Global variables for browser management
 let globalBrowser: Browser | null = null;
+let consoleLogs: any[] = [];
+let networkLogs: any[] = [];
 
 /**
  * Browser setup utilities for Playwright BDD tests
@@ -86,8 +88,16 @@ export class BrowserManager {
         // Set default timeout
         this.page.setDefaultTimeout(config.timeout);
         
-        // Add console logging for debugging
+        // Add console logging for debugging and Allure reporting
         this.page.on('console', msg => {
+            const logEntry = {
+                type: msg.type(),
+                text: msg.text(),
+                timestamp: new Date().toISOString(),
+                url: this.page?.url() || 'unknown'
+            };
+            consoleLogs.push(logEntry);
+            
             if (msg.type() === 'error') {
                 console.log(`❌ Browser Console Error: ${msg.text()}`);
             }
@@ -95,7 +105,39 @@ export class BrowserManager {
         
         // Add page error handling
         this.page.on('pageerror', error => {
+            const errorEntry = {
+                type: 'pageerror',
+                message: error.message,
+                stack: error.stack,
+                timestamp: new Date().toISOString(),
+                url: this.page?.url() || 'unknown'
+            };
+            consoleLogs.push(errorEntry);
             console.log(`❌ Page Error: ${error.message}`);
+        });
+        
+        // Add network request/response logging
+        this.page.on('request', request => {
+            const networkEntry = {
+                type: 'request',
+                method: request.method(),
+                url: request.url(),
+                headers: request.headers(),
+                timestamp: new Date().toISOString()
+            };
+            networkLogs.push(networkEntry);
+        });
+        
+        this.page.on('response', response => {
+            const networkEntry = {
+                type: 'response',
+                status: response.status(),
+                statusText: response.statusText(),
+                url: response.url(),
+                headers: response.headers(),
+                timestamp: new Date().toISOString()
+            };
+            networkLogs.push(networkEntry);
         });
 
         return this.page;
@@ -136,6 +178,9 @@ export class BrowserManager {
             await this.context.close();
             this.context = null;
             this.page = null;
+            // Clear logs for next test
+            consoleLogs = [];
+            networkLogs = [];
             console.log('🧹 Context closed and cleaned up');
         }
     }
@@ -164,6 +209,28 @@ export class BrowserManager {
      */
     static getCurrentContext(): BrowserContext | null {
         return this.context;
+    }
+    
+    /**
+     * Get console logs for current test session
+     */
+    static getConsoleLogs(): any[] {
+        return [...consoleLogs];
+    }
+    
+    /**
+     * Get network logs for current test session
+     */
+    static getNetworkLogs(): any[] {
+        return [...networkLogs];
+    }
+    
+    /**
+     * Clear all logs
+     */
+    static clearLogs(): void {
+        consoleLogs = [];
+        networkLogs = [];
     }
 }
 

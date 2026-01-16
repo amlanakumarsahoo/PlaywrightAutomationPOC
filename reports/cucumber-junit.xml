@@ -1,0 +1,262 @@
+<testsuites id="" name="" tests="18" failures="5" skipped="0" errors="0" time="129.851899">
+<testsuite name="src\test\features\home_page.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="chromium" tests="1" failures="0" skipped="0" time="8.779" errors="0">
+<testcase name="automationexercise application Home Page functionality › Home Page has a valid Title" classname="src\test\features\home_page.feature.spec.js" time="8.779">
+</testcase>
+</testsuite>
+<testsuite name="src\test\features\signup_login.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="chromium" tests="5" failures="0" skipped="0" time="57.089" errors="0">
+<testcase name="automationexercise application user signup functionality › New user signup to the automationexercise application › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="19.915">
+<system-out>
+<![CDATA[User Address Information: First Name: Zetta, Last Name: Rolfson, Company: Koss - Marvin, Address1: 6908 Dale Street, Address2: 289 Ledner View, Country: United States, State: New York, City: New York, Zip Code: 10001, Mobile Number: 7328222544
+]]>
+</system-out>
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with correct email and password" classname="src\test\features\signup_login.feature.spec.js" time="10.431">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with incorrect email and password" classname="src\test\features\signup_login.feature.spec.js" time="11.328">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Logout User" classname="src\test\features\signup_login.feature.spec.js" time="8.951">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Register User with existing email › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="6.464">
+</testcase>
+</testsuite>
+<testsuite name="src\test\features\home_page.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="firefox" tests="1" failures="0" skipped="0" time="13.859" errors="0">
+<testcase name="automationexercise application Home Page functionality › Home Page has a valid Title" classname="src\test\features\home_page.feature.spec.js" time="13.859">
+</testcase>
+</testsuite>
+<testsuite name="src\test\features\signup_login.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="firefox" tests="5" failures="1" skipped="0" time="116.243" errors="0">
+<testcase name="automationexercise application user signup functionality › New user signup to the automationexercise application › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="31.78">
+<failure message="signup_login.feature.spec.js:8:9 Example #1" type="FAILURE">
+<![CDATA[  [firefox] › src\test\features\signup_login.feature.spec.js:8:9 › automationexercise application user signup functionality › New user signup to the automationexercise application › Example #1 @Regression_UserSignUp_TC001 @Regression › Then user fill the user address information 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#address2')
+        - locator resolved to <input value="" type="text" id="address2" name="address2" data-qa="address2" class="form-control"/>
+        - fill("17365 The Oval")
+      - attempting fill action
+        - waiting for element to be visible, enabled and editable
+
+
+       at ..\src\main\web-implementation\SignUpLoginPage.ts:166
+
+      164 |         
+      165 |         await this.address2.waitFor({ state: 'visible' });
+    > 166 |         await this.address2.fill(address2, { timeout: 10000 });
+          |                             ^
+      167 |         
+      168 |         await this.country.waitFor({ state: 'visible' });
+      169 |         await this.country.selectOption(country, { timeout: 10000 });
+        at SignUpLoginPage.getUserAddressInfo (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\web-implementation\SignUpLoginPage.ts:166:29)
+        at Object.<anonymous> (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\test\step-definitions\SignUpLogin_page_steps.ts:54:5)
+        at C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\.features-gen\src\test\features\signup_login.feature.spec.js:20:7
+
+    Error Context: ..\test-results\src-test-features-signup_l-784ed-rcise-application-Example-1-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\src-test-features-signup_l-784ed-rcise-application-Example-1-firefox\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with correct email and password" classname="src\test\features\signup_login.feature.spec.js" time="25.508">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with incorrect email and password" classname="src\test\features\signup_login.feature.spec.js" time="25.589">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Logout User" classname="src\test\features\signup_login.feature.spec.js" time="20.44">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Register User with existing email › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="12.926">
+</testcase>
+</testsuite>
+<testsuite name="src\test\features\home_page.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="webkit" tests="1" failures="0" skipped="0" time="10.344" errors="0">
+<testcase name="automationexercise application Home Page functionality › Home Page has a valid Title" classname="src\test\features\home_page.feature.spec.js" time="10.344">
+</testcase>
+</testsuite>
+<testsuite name="src\test\features\signup_login.feature.spec.js" timestamp="2026-01-16T06:15:14.657Z" hostname="webkit" tests="5" failures="4" skipped="0" time="135.771" errors="0">
+<testcase name="automationexercise application user signup functionality › New user signup to the automationexercise application › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="30.093">
+<failure message="signup_login.feature.spec.js:8:9 Example #1" type="FAILURE">
+<![CDATA[  [webkit] › src\test\features\signup_login.feature.spec.js:8:9 › automationexercise application user signup functionality › New user signup to the automationexercise application › Example #1 @Regression_UserSignUp_TC001 @Regression 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.title: Target page, context or browser has been closed
+
+       at ..\src\test\step-definitions\SignUpLogin_page_steps.ts:17
+
+      15 | Then('user should be redirected to the signup page', async ({ page }) => {
+      16 |     const currentUrl = page.url();
+    > 17 |     const pageTitle = await page.title();
+         |                                  ^
+      18 |     expect(currentUrl.toLowerCase()).toContain('login');
+      19 | });
+      20 |
+        at Object.<anonymous> (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\test\step-definitions\SignUpLogin_page_steps.ts:17:34)
+        at C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\.features-gen\src\test\features\signup_login.feature.spec.js:11:7
+
+    Error Context: ..\test-results\src-test-features-signup_l-784ed-rcise-application-Example-1-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\src-test-features-signup_l-784ed-rcise-application-Example-1-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with correct email and password" classname="src\test\features\signup_login.feature.spec.js" time="19.904">
+</testcase>
+<testcase name="automationexercise application user signup functionality › Login User with incorrect email and password" classname="src\test\features\signup_login.feature.spec.js" time="30.196">
+<failure message="signup_login.feature.spec.js:40:7 Login User with incorrect email and password" type="FAILURE">
+<![CDATA[  [webkit] › src\test\features\signup_login.feature.spec.js:40:7 › automationexercise application user signup functionality › Login User with incorrect email and password @Regression_UserLogin_TC003 @Regression › Given User Visits HomePage 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://automationexercise.com/", waiting until "load"
+
+
+       at ..\src\main\web-implementation\HomePage.ts:38
+
+      36 |     async navigate(): Promise<void> {
+      37 |         // Log the properties of 
+    > 38 |         await this.page.goto(getHerokuAppUrl());
+         |                         ^
+      39 |     }
+      40 |
+      41 |     getFooterText(): Promise<string | null> {
+        at HomePage.navigate (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\web-implementation\HomePage.ts:38:25)
+        at Function.create (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\web-implementation\HomePage.ts:32:26)
+        at getAutoExeApp (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\utilities\autoExe-utils.ts:16:27)
+        at Object.<anonymous> (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\test\step-definitions\home_page_steps.ts:9:33)
+        at C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\.features-gen\src\test\features\signup_login.feature.spec.js:41:5
+
+    Error Context: ..\test-results\src-test-features-signup_l-66e17-ncorrect-email-and-password-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\src-test-features-signup_l-66e17-ncorrect-email-and-password-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="automationexercise application user signup functionality › Logout User" classname="src\test\features\signup_login.feature.spec.js" time="25.395">
+<failure message="signup_login.feature.spec.js:48:7 Logout User" type="FAILURE">
+<![CDATA[  [webkit] › src\test\features\signup_login.feature.spec.js:48:7 › automationexercise application user signup functionality › Logout User @Regression_UserLogin_TC004 @Regression › Then user should be able to verify loggedin user 
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+       at ..\src\test\step-definitions\SignUpLogin_page_steps.ts:74
+
+      72 | Then('user should be able to verify loggedin user', async ({ page }) => {
+      73 |     const loggedInUser = await signUpLoginPage.getLoggedInUser();
+    > 74 |     expect(loggedInUser).toBeTruthy();
+         |                          ^
+      75 | });
+      76 | Then('user should able to delete the account', async ({ page }) => {
+      77 |     await signUpLoginPage.deleteAccount();
+        at Object.<anonymous> (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\test\step-definitions\SignUpLogin_page_steps.ts:74:26)
+        at C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\.features-gen\src\test\features\signup_login.feature.spec.js:53:5
+
+    Error Context: ..\test-results\src-test-features-signup_l-621a8-p-functionality-Logout-User-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Could not find logged in user text: locator.textContent: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('li:has-text("Logged in as")')[22m
+
+    at SignUpLoginPage.getLoggedInUser [90m(C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\[39msrc\main\web-implementation\SignUpLoginPage.ts:202:93[90m)[39m
+    at Object.<anonymous> [90m(C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\[39msrc\test\step-definitions\SignUpLogin_page_steps.ts:73:48[90m)[39m
+    at [90mC:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\[39m.features-gen\src\test\features\signup_login.feature.spec.js:53:5 {
+  name: [32m'TimeoutError'[39m,
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'C:\\Users\\Amlana.sahoo\\QA-Training\\automation_infogain_TestBDD\\Temp_POC\\src\\main\\web-implementation\\SignUpLoginPage.ts'[39m,
+      line: [33m202[39m,
+      column: [33m93[39m,
+      function: [32m'SignUpLoginPage.getLoggedInUser'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m`Get text content locator('li:has-text("Logged in as")')`[39m,
+    apiName: [32m'locator.textContent'[39m,
+    params: {
+      selector: [32m'li:has-text("Logged in as")'[39m,
+      strict: [33mtrue[39m,
+      timeout: [33m5000[39m
+    },
+    group: [32m'getter'[39m,
+    stepId: [32m'pw:api@51'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@51'[39m,
+      _title: [32m`Get text content locator('li:has-text("Logged in as")')`[39m,
+      _parentStep: [36m[TestStepInfoImpl][39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1768544228411[39m,
+    error: {
+      message: [32m'TimeoutError: locator.textContent: Timeout 5000ms exceeded.\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m`\x1B[2m  - waiting for locator('li:has-text("Logged in as")')\x1B[22m\n`[39m,
+      stack: [32m'TimeoutError: locator.textContent: Timeout 5000ms exceeded.\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m`\x1B[2m  - waiting for locator('li:has-text("Logged in as")')\x1B[22m\n`[39m +
+        [32m'\n'[39m +
+        [32m'    at SignUpLoginPage.getLoggedInUser (C:\\Users\\Amlana.sahoo\\QA-Training\\automation_infogain_TestBDD\\Temp_POC\\src\\main\\web-implementation\\SignUpLoginPage.ts:202:93)\n'[39m +
+        [32m'    at Object.<anonymous> (C:\\Users\\Amlana.sahoo\\QA-Training\\automation_infogain_TestBDD\\Temp_POC\\src\\test\\step-definitions\\SignUpLogin_page_steps.ts:73:48)\n'[39m +
+        [32m'    at C:\\Users\\Amlana.sahoo\\QA-Training\\automation_infogain_TestBDD\\Temp_POC\\.features-gen\\src\\test\\features\\signup_login.feature.spec.js:53:5'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+
+[[ATTACHMENT|..\test-results\src-test-features-signup_l-621a8-p-functionality-Logout-User-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="automationexercise application user signup functionality › Register User with existing email › Example #1" classname="src\test\features\signup_login.feature.spec.js" time="30.183">
+<failure message="signup_login.feature.spec.js:60:9 Example #1" type="FAILURE">
+<![CDATA[  [webkit] › src\test\features\signup_login.feature.spec.js:60:9 › automationexercise application user signup functionality › Register User with existing email › Example #1 @Regression_UserLogin_TC005 @Regression › Given User Visits HomePage 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+      - navigating to "http://automationexercise.com/", waiting until "load"
+
+
+       at ..\src\main\web-implementation\HomePage.ts:38
+
+      36 |     async navigate(): Promise<void> {
+      37 |         // Log the properties of 
+    > 38 |         await this.page.goto(getHerokuAppUrl());
+         |                         ^
+      39 |     }
+      40 |
+      41 |     getFooterText(): Promise<string | null> {
+        at HomePage.navigate (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\web-implementation\HomePage.ts:38:25)
+        at Function.create (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\web-implementation\HomePage.ts:32:26)
+        at getAutoExeApp (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\main\utilities\autoExe-utils.ts:16:27)
+        at Object.<anonymous> (C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\src\test\step-definitions\home_page_steps.ts:9:33)
+        at C:\Users\Amlana.sahoo\QA-Training\automation_infogain_TestBDD\Temp_POC\.features-gen\src\test\features\signup_login.feature.spec.js:61:7
+
+    Error Context: ..\test-results\src-test-features-signup_l-e65fb-th-existing-email-Example-1-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\src-test-features-signup_l-e65fb-th-existing-email-Example-1-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
