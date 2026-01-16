@@ -15,13 +15,13 @@ export class ContactUsPage extends BasePage implements ContactusOperations {
     private readonly submitButton: Locator;
     private readonly okButton: Locator;
     private readonly confirmationMessage: Locator;
+    private readonly homePageBtn: Locator;
 
     constructor(page: any) {
         super();
         this.page = page;
         this.contactUsBtn = page.getByRole('link', { name: ' Contact us' });
         this.getInTouchFormTitle = page.getByRole('heading', { name: 'Get In Touch' });
-        //this.name = page.getByRole('textbox', { name: 'Name' });
         this.name = page.getByRole('textbox', { name: 'Name' });
         this.email = page.getByRole('textbox', { name: 'Email', exact: true });
         this.subject = page.getByRole('textbox', { name: 'Subject' });
@@ -30,6 +30,7 @@ export class ContactUsPage extends BasePage implements ContactusOperations {
         this.submitButton = page.getByRole('button', { name: 'Submit' });
         this.okButton = page.getByRole('button', { name: 'OK' });
         this.confirmationMessage = page.getByRole('alert');
+        this.homePageBtn = page.getByRole('link', { name: 'Home' });
     }
     
     static async create(page: Page) {
@@ -53,19 +54,21 @@ export class ContactUsPage extends BasePage implements ContactusOperations {
     }
     async attachFile(filepath:string): Promise<void | null> {
         await this.fileAttachment.setInputFiles(filepath,{timeout: 10000});
-        await this.page.waitForTimeout(9000);
     }
     async submitContactUsForm(): Promise<void | null> {
-        await this.submitButton.click();
+        await this.submitButton.click({timeout: 10000});
+        await this.page.waitForTimeout(9000);
     }
     async doPressOk(): Promise<void | null> {
-        await this.okButton.click();
+        await this.okButton.click({timeout: 10000});
     }
     async getContactUsConfirmation(): Promise<string | null> {
         return this.confirmationMessage.textContent();
     }
     async navigateToHomePage(): Promise<void> {
-        await this.page.goto(getAutoExeUrl());
+        await this.homePageBtn.click();
     }
-    
+    async getHomePageTitle(): Promise<boolean | null> {
+        return this.page.title();
+    }
 }

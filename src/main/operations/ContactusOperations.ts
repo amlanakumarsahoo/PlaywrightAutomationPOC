@@ -7,4 +7,5 @@ export interface ContactusOperations {
     doPressOk(): Promise<void|null>;
     getContactUsConfirmation(): Promise<string|null>;
     navigateToHomePage(): Promise<void>;
+    getHomePageTitle(): Promise<boolean|null>;
 }

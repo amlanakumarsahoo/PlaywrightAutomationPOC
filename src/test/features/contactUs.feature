@@ -12,6 +12,9 @@ Feature: automationexercise application Contact Us functionality
             | filepath                         |
             | resources/TestAttachmentFile.txt |
         When User submits the contact us form
+        # Then user should be able to verify contact us confirmation
+        When user navigate to home page
+        Then user should be able to verify home page title
 
 
 
