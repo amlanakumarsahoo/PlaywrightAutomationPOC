@@ -110,3 +110,15 @@ Then('user should be on login page', async ({ page }) => {
     expect(currentUrl.toLowerCase()).toContain('login');
     expect(pageTitle.toLowerCase()).toContain('login');
 });
+
+Then('user validate the error message {string}', async ({ page }, errormessage: string) => {
+    const emailAlreadyExist = await signUpLoginPage.getAlreadyExistEmail();
+    expect(emailAlreadyExist).toContain(errormessage);
+});
+
+Then('user should be able to enter existing username {string}', async ({ page }, username: string) => {
+    await signUpLoginPage.getUserName(username);
+});
+Then('user should be able to enter existing email address {string}', async ({ page }, emailaddress: string) => {
+    await signUpLoginPage.getEmailAddress(emailaddress);
+});

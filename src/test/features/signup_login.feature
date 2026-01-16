@@ -66,9 +66,10 @@ Feature: automationexercise application user signup functionality
         Given User Visits HomePage
         When User Clicks on Signup
         Then user should be redirected to the signup page
-        Then user should be able to enter the username "<username>"
-        Then user should be able to enter the email address "<emailaddress>"
+        Then user should be able to enter existing username "<username>"
+        Then user should be able to enter existing email address "<emailaddress>"
         Then user should be able to click on signup button
+        Then user validate the error message "<errormessage>"
         Examples:
-            | username         | emailaddress |
-            | amlana@gmail.com | Password@1   |
+            | username  | emailaddress     | errormessage                 |
+            | Amlana123 | amlana@gmail.com | Email Address already exist! |

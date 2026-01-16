@@ -38,6 +38,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     private readonly loginButton: Locator;
     private readonly loginFailedConfirmation: Locator;
     private readonly logoutButton: Locator;
+    private readonly alreadyExistEmail: Locator;
 
     constructor(page: any) {
         super();
@@ -75,6 +76,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         this.loginButton = page.locator("form").filter({ hasText: 'Login' }).getByRole('button', { name: 'Login' })
         this.loginFailedConfirmation = page.locator("p:has-text('Your email or password is incorrect')");
         this.logoutButton = page.locator("//a[@href='/logout']");
+        this.alreadyExistEmail = page.getByText('Email Address already exist!')
     }   
     [x: string]: any;
     async getUserPassword(): Promise<void> {
@@ -243,5 +245,9 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
     }   
     async logout(): Promise<void> {
         await this.logoutButton.click({ timeout: 5000 }); 
+    }
+    async getAlreadyExistEmail(): Promise<string | null> {
+        const alreadyExistEmailText = await this.alreadyExistEmail.textContent({ timeout: 9000 });
+        return alreadyExistEmailText;
     }
 }

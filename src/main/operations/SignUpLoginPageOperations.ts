@@ -20,4 +20,5 @@ export interface SignUpLoginPageOperations {
     verifyLoggedInUser(): Promise<boolean | null>;
     getLoginFailedConfirmation(): Promise<boolean | null>;
     logout(): Promise<void>;
+    getAlreadyExistEmail(): Promise<string | null>;
 }
