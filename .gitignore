@@ -140,4 +140,8 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-.features-gen
+.features-gen/
+reports/cucumber-junit.xml
+reports/playwright-report
+reports/playwright-report/*
+reports/playwright-report/playwright-report.html

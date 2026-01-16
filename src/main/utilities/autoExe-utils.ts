@@ -6,7 +6,7 @@ import { SignUpLoginPageOperations } from "../operations/SignUpLoginPageOperatio
 import { getTestConfig } from "./test-config";
 import { TestHelpers } from "./test-helpers";
 
-export function getHerokuAppUrl(): string {
+export function getAutoExeUrl(): string {
     // Get URL from config or environment
     const config = getTestConfig();
     return config.baseUrl || process.env.BASE_URL || 'http://automationexercise.com';

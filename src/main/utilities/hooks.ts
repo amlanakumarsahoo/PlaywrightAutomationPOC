@@ -1,5 +1,5 @@
 import { Browser, BrowserContext, Page, chromium, firefox, webkit, test } from '@playwright/test';
-import { getHerokuAppUrl } from './autoExe-utils';
+import { getAutoExeUrl } from './autoExe-utils';
 import { getTestConfig } from './test-config';
 
 // Global variables for browser management
@@ -151,7 +151,7 @@ export class BrowserManager {
             await this.createPage();
         }
 
-        const baseUrl = getHerokuAppUrl();
+        const baseUrl = getAutoExeUrl();
         await this.page!.goto(baseUrl, { waitUntil: 'networkidle' });
         console.log(`🌐 Navigated to: ${baseUrl}`);
     }

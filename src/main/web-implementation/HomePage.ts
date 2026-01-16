@@ -1,7 +1,7 @@
 import { HomePageOperations } from "@src/main/operations/HomePageOperations";
 import { BasePage } from "@src/main/web-implementation/BasePage";
 import {Page, Locator} from '@playwright/test';
-import { getHerokuAppUrl } from "@src/main/utilities/autoExe-utils";
+import { getAutoExeUrl } from "@src/main/utilities/autoExe-utils";
 export class HomePage extends BasePage implements HomePageOperations {
     //private readonly page;
     private readonly subTitleSelector:Locator; // data-testid = subtitle
@@ -35,7 +35,7 @@ export class HomePage extends BasePage implements HomePageOperations {
       
     async navigate(): Promise<void> {
         // Log the properties of 
-        await this.page.goto(getHerokuAppUrl());
+        await this.page.goto(getAutoExeUrl());
     }
 
     getFooterText(): Promise<string | null> {
