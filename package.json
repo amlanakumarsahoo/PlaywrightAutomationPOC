@@ -21,10 +21,13 @@
     "report:clean": "npx ts-node -e \"require('./src/main/utilities/cucumber-report-generator.ts').CucumberReportGenerator.cleanOldReports()\"",
     "report:playwright": "playwright show-report",
     "report:open": "start reports/playwright-html-report/index.html",
+    "report:open:cucumber": "start reports/cucumber-html-report/index.html",
     "test:full": "node run-tests-with-reports.js",
     "test:full:open": "node run-tests-with-reports.js --open",
-    "test:reports": "npm run report:clean && npm run testbdd && npm run report:cucumber",
-    "test_amlana": "bddgen && playwright test --headed --grep @Regression_UserLogin_TC005 --project=chromium && npx playwright show-report"
+    "test:reports": "npm run report:clean && npm run testbdd && npm run report:cucumber && npm run report:open:cucumber",
+    "test:bootstrap": "npm run testbdd && npm run report:cucumber && npm run report:open:cucumber",
+    "report:bootstrap": "npm run report:cucumber && npm run report:open:cucumber",
+    "test_amlana": "bddgen && playwright test --headed --grep @Regression_UserLogin_TC005 --project=chromium && npm run report:bootstrap"
   },
   "keywords": [
     "typescript",
@@ -43,6 +46,7 @@
     "@types/node": "^20.10.0",
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
+    "cucumber-html-reporter": "^7.2.0",
     "eslint": "^8.54.0",
     "multiple-cucumber-html-reporter": "^3.9.3",
     "playwright-bdd": "^8.4.2",

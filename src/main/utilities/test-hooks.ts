@@ -60,13 +60,15 @@ export async function globalTeardown() {
     testContext.browser = null;
   }
   
-  // Generate Cucumber HTML report
-  console.log('📊 Generating Cucumber HTML report...');
+  // Generate Bootstrap HTML report automatically
+  console.log('📊 Generating Bootstrap HTML report...');
   try {
     await CucumberReportGenerator.generateReport();
-    console.log('✅ Cucumber HTML report generated successfully!');
+    console.log('✅ Bootstrap HTML report generated successfully!');
+    console.log('📂 Report location: reports/cucumber-html-report/index.html');
+    console.log('🌐 Open with: npm run report:open:cucumber');
   } catch (error) {
-    console.error('❌ Failed to generate Cucumber HTML report:', error);
+    console.error('❌ Failed to generate Bootstrap HTML report:', error);
   }
   
   console.log('✅ Global cleanup completed');
