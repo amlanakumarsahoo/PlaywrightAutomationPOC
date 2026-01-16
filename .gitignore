@@ -145,3 +145,8 @@ reports/cucumber-junit.xml
 reports/playwright-report
 reports/playwright-report/*
 reports/playwright-report/playwright-report.html
+.features-gen/src/test/features/home_page.feature.spec.js
+reports/cucumber-junit.xml
+reports/cucumber-report.json
+reports/cucumber-html-report/index.html
+reports/playwright-html-report/index.html
