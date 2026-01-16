@@ -193,7 +193,7 @@ export class SignUpLoginPage extends BasePage implements SignUpLoginPageOperatio
         return false;
     }
     async doContinue(): Promise<void> {
-        await this.continueButton.click({ timeout: 5000 }); 
+        await this.continueButton.click({ timeout: 9000 }); 
     }
     async getLoggedInUser(): Promise<boolean | null> {
         try {
