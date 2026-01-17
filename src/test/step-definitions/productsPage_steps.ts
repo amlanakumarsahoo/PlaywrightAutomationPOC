@@ -18,7 +18,8 @@ Then('User should be redirected to All Products page', async ({}) => {
 
 });
 
-Then('User verifies product list visibility', async ({}) => {
+Then('User verifies product list', async ({}) => {
+    expect(await productsPage.verifyProductListCount()).toBeGreaterThan(0);
    
 });
 

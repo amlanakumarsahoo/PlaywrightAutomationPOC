@@ -6,7 +6,7 @@ Feature: automationexercise application products page functionality
         When User Observes HomePage Title
         When User navigates to Products tab
         Then User should be redirected to All Products page
-        # # Then User verifies product list visibility
+        Then User verifies product list
         Then User clicks on first product
         Then User landed to product detail page
         Then User verifies product name, category, price, availability, condition, brand

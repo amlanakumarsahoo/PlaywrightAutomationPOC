@@ -12,6 +12,7 @@ export class ProductsPage extends BasePage implements ProductsPageOperations {
     private readonly productCondition: Locator;
     private readonly productBrand: Locator;
     private readonly viewFirstProductBtn: Locator;
+    private readonly productList: Locator;
 
     constructor(page: any) {
         super();
@@ -25,7 +26,7 @@ export class ProductsPage extends BasePage implements ProductsPageOperations {
         this.productAvailability = page.getByText('Availability: In Stock');
         this.productCondition = page.getByText('Condition: New');
         this.productBrand = page.getByText('Brand: Polo');
-
+        this.productList = page.locator('.single-products');
     }
     static async create(page: Page): Promise<ProductsPage> {
         return new ProductsPage(page);
@@ -34,8 +35,10 @@ export class ProductsPage extends BasePage implements ProductsPageOperations {
     async verifyAllProductsPage(): Promise<string> {
         return await this.productsPageHeader.textContent() as string;
     }
-    async getAllProductsList(): Promise<string[]> {
-        return await this.productName.allTextContents();
+    async verifyProductListCount(): Promise<number> {
+        let productCount: number = await this.productList.count();
+        console.log("Product count in ProductsPage: " + productCount);
+        return productCount;
     }
     async viewFirstProduct(): Promise<void> {
         await this.viewFirstProductBtn.click();
