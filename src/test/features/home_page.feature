@@ -4,7 +4,7 @@ I should see a valid Title
 @HomePage_TC001 @Regression
 Scenario: Home Page has a valid Title
 Given User Visits HomePage
-When User Observes Title
+When User Observes HomePage Title
 Then title should match "Automation Exercise"
 
 

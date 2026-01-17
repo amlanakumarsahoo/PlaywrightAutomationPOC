@@ -9,6 +9,8 @@ import { ContactusOperations } from "../operations/ContactusOperations";
 import { ContactUsPage } from "../web-implementation/ContactUsPage";
 import { TestCasePage } from "../web-implementation/TestCasePage";
 import { TestCasePageOperations } from "../operations/TestCasePageOperations";
+import { ProductsPageOperations } from "../operations/ProductsPageOperations";
+import { ProductsPage } from "../web-implementation/ProductsPage";
 
 export function getAutoExeUrl(): string {
     // Get URL from config or environment
@@ -30,6 +32,10 @@ export async function getContactUsApp(page: Page): Promise<ContactusOperations> 
 
 export async function getTestCaseApp(page: Page): Promise<TestCasePageOperations> {
     return await TestCasePage.create(page);
+}
+
+export async function getProductsPageApp(page: Page): Promise<ProductsPageOperations> {
+    return await ProductsPage.create(page);
 }
 
 export function getTestHelpers(page: Page): TestHelpers {

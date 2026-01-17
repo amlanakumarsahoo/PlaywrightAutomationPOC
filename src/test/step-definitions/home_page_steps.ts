@@ -9,12 +9,11 @@ Given('User Visits HomePage', async ({page}) => {
   homePage = await getAutoExeApp(page) as HomePageOperations;
 });
 
-When('User Observes Title', async ({}) => {
+When('User Observes HomePage Title', async ({}) => {
   actualResult =await homePage.getTitle();
 });
 
 Then('title should match {string}', async ({}, arg) => {
-  expect(actualResult).toEqual(arg);
   expect(actualResult).toEqual(arg);
 });
 
