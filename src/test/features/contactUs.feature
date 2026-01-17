@@ -1,6 +1,6 @@
 Feature: automationexercise application Contact Us functionality
 
-    @Regression_ContactUs_TC001
+    @ContactUs_TC001 @Regression
     Scenario: Contact Us functionality
         Given User Visits HomePage
         When User Clicks on Contact Us

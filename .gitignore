@@ -150,3 +150,5 @@ reports/cucumber-junit.xml
 reports/cucumber-report.json
 reports/cucumber-html-report/index.html
 reports/playwright-html-report/index.html
+reports/cucumber-report.json
+reports/cucumber-junit.xml

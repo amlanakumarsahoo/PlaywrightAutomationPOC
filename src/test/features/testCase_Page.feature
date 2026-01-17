@@ -1,6 +1,6 @@
 Feature: automationexercise application Test Case functionality
 
-    @Regression_TestCase_TC001
+    @TestCasePage_TC001 @Regression
     Scenario: Test Case functionality
         Given User Visits HomePage
         When User Clicks on Test Cases tab
